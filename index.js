@@ -16,7 +16,7 @@ app.use('/posts', postsRouter);
 app.use('/comments', commentsRouter);
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+  res.send('Hello World2!');
   console.log('Hi!');
 });
 
