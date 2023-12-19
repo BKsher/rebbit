@@ -8,7 +8,7 @@ const commentsRouter = require('./comments');
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(express.json());  // Middleware to parse JSON bodies
+app.use(express.json());  // Middleware to parse JSON bodies |
 app.use(cors());
 app.use('/auth', authRouter);
 app.use('/threads', threadsRouter);
