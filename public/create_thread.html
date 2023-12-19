@@ -23,7 +23,7 @@
             const title = document.getElementById('title').value;
             const userId = 1; // Hardcoded user ID for testing
 
-            fetch('http://localhost:3000/threads', {
+            fetch('https://rebbit-d25da83b2fc6.herokuapp.com/threads', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -38,7 +38,7 @@
         });
 
         document.getElementById('viewThreads').addEventListener('click', function() {
-            fetch('http://localhost:3000/threads')
+            fetch('https://rebbit-d25da83b2fc6.herokuapp.com/threads')
             .then(response => response.json())
             .then(data => {
                 const threadList = document.getElementById('threadList');
