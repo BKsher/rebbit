@@ -45,7 +45,7 @@
                 threadList.innerHTML = ''; // Clear current list
                 data.forEach(thread => {
                     const listItem = document.createElement('li');
-                    listItem.textContent = `${thread.title} (ID: ${thread.thread_id})`;
+                    listItem.textContent = thread;
                     threadList.appendChild(listItem);
                 });
             })
