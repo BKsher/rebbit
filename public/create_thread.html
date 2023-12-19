@@ -38,21 +38,23 @@
         });
 
         document.getElementById('viewThreads').addEventListener('click', function() {
-            fetch('https://rebbit-d25da83b2fc6.herokuapp.com/threads')
-            .then(response => response.json())
-            .then(data => {
-                const threadList = document.getElementById('threadList');
-                threadList.innerHTML = ''; // Clear current list
-                data.forEach(thread => {
-                    const listItem = document.createElement('li');
-                    listItem.textContent = thread;
-                    threadList.appendChild(listItem);
-                });
-            })
-            .catch((error) => {
-                console.error('Error:', error);
+        fetch('https://rebbit-d25da83b2fc6.herokuapp.com/threads') // Replace with your Heroku app URL
+        .then(response => response.json())
+        .then(data => {
+            const threadList = document.getElementById('threadList');
+            threadList.innerHTML = ''; // Clear current list
+
+            data.forEach(thread => {
+                const listItem = document.createElement('li');
+                const threadInfo = JSON.stringify(thread, null, 2); // Convert thread object to formatted string
+                listItem.textContent = threadInfo;
+                threadList.appendChild(listItem);
             });
+        })
+        .catch((error) => {
+            console.error('Error:', error);
         });
+    });
     </script>
 </body>
 </html>
