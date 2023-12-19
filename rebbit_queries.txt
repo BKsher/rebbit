@@ -83,3 +83,5 @@ Description: Allows the author or an admin to delete a comment.
 Данные ответа: каждый endpoint будет возвращать данные в формате JSON вместе с соответствующими кодами состояния HTTP.
 
 Обработка ошибок: в случае ошибки (например, недопустимого ввода или несанкционированного доступа) конечные точки будут возвращать сообщения об ошибках и соответствующие коды состояния HTTP.
+
+mysql://kzrhihgfrs04k1hq:ev2mi6zhme4jj7aw@yjo6uubt3u5c16az.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/tox9xtdrjlueve5a
