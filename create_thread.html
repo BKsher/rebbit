@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create and View Threads</title>
+</head>
+<body>
+    <h2>Create a New Thread</h2>
+    <form id="threadForm">
+        <input type="text" id="title" placeholder="Thread Title" required><br>
+        <button type="submit">Create Thread</button>
+    </form>
+
+    <h2>All Threads</h2>
+    <button id="viewThreads">See All Threads</button>
+    <ul id="threadList"></ul>
+
+    <script>
+        document.getElementById('threadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const title = document.getElementById('title').value;
+            const userId = 1; // Hardcoded user ID for testing
+
+            fetch('http://localhost:3000/threads', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ title, userId }),
+            })
+            .then(response => response.text())
+            .then(data => alert(data))
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+
+        document.getElementById('viewThreads').addEventListener('click', function() {
+            fetch('http://localhost:3000/threads')
+            .then(response => response.json())
+            .then(data => {
+                const threadList = document.getElementById('threadList');
+                threadList.innerHTML = ''; // Clear current list
+                data.forEach(thread => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = `${thread.title} (ID: ${thread.thread_id})`;
+                    threadList.appendChild(listItem);
+                });
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
