@@ -6,7 +6,7 @@ const db = require('./database');
 // Endpoint to create a new thread (Authenticated users)
 router.post('/', authenticate, (req, res) => {
   const { title } = req.body;
-  const userId = req.user.id; // Assuming the user ID is stored in req.user by your authentication middleware
+  const userId = req.user.id; // user ID is stored in req.user by authentication middleware
 
   if (!title) {
     return res.status(400).send('Title is required');
