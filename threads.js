@@ -8,6 +8,7 @@ router.post('/', authenticate, (req, res) => {
   const { title } = req.body;
   console.log("User from req.user:", req.user); // Debugging line
   const userId = req.user.id; // user ID is stored in req.user by authentication middleware
+  console.log("User id from req.user.id:", userId); // Debugging line
 
   if (!title) {
     return res.status(400).send('Title is required');
