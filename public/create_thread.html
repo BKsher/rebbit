@@ -12,6 +12,12 @@
         <button type="submit">Create Thread</button>
     </form>
 
+    <h2>Delete Thread</h2>
+    <form id="deleteThreadForm">
+        <input type="text" id="threadIdToDelete" placeholder="Thread ID" required><br>
+        <button type="submit">Delete Thread</button>
+    </form>
+
     <h2>All Threads</h2>
     <button id="viewThreads">See All Threads</button>
     <ul id="threadList"></ul>
@@ -53,6 +59,32 @@
         })
         .catch((error) => {
             console.error('Error:', error);
+        });
+
+         // Script to handle thread deletion
+        document.getElementById('deleteThreadForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const threadId = document.getElementById('threadIdToDelete').value;
+
+            fetch(`https://rebbit-d25da83b2fc6.herokuapp.com/threads/${threadId}`, {
+                method: 'DELETE',
+                headers: {
+                    'Authorization': localStorage.getItem('token') // Include the token here
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    return response.text();
+                } else {
+                    throw new Error('Failed to delete thread');
+                }
+            })
+            .then(data => alert(data))
+            .catch((error) => {
+                console.error('Error:', error);
+                alert(error);
+            });
         });
     });
     </script>
