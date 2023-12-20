@@ -6,6 +6,7 @@ const db = require('../database'); // Adjust the path as per your project struct
 
 // User login endpoint
 router.post('/login', (req, res) => {
+  console.log("I'm in login!!!");
   try {
     const { email, password } = req.body;
 
