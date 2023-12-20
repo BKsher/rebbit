@@ -4,6 +4,7 @@ const cors = require('cors');
 const db = require('./database');
 const registerRouter = require('./auth/register');
 const loginRouter = require('./auth/login');
+const userRoutes = require('./users');
 const threadsRouter = require('./threads');
 const postsRouter = require('./posts');
 const commentsRouter = require('./comments');
@@ -16,6 +17,7 @@ app.use(express.json());  // Middleware to parse JSON bodies |
 app.use(cors());
 app.use('/auth', registerRouter);
 app.use('/auth', loginRouter);
+app.use('/users', userRoutes);
 app.use('/threads', threadsRouter);
 app.use('/posts', postsRouter);
 app.use('/comments', commentsRouter);
