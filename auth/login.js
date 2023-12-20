@@ -33,8 +33,8 @@ router.post('/login', (req, res) => {
       if (isMatch) {
         // Passwords match
         console.log("User object:", user); // Add this line to debug
-        const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        return res.json({ token });
+        const token = jwt.sign({ id: user.user_id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    return res.json({ token });
         //res.send('Login successful');
       } else {
         // Passwords do not match
