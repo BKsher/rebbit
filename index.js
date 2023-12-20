@@ -25,18 +25,6 @@ app.get('/', (req, res) => {
   console.log('Hi!');
 });
 
-
-// // GET endpoint to fetch all users
-// app.get('/users', (req, res) => {
-//   db.query('SELECT * FROM Users', (err, results) => {
-//     if (err) {
-//       res.status(500).send('Error retrieving data from database');
-//     } else {
-//       res.json(results);
-//     }
-//   });
-// });
-
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
