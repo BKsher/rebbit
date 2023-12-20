@@ -24,7 +24,7 @@
             const threadId = document.getElementById('threadId').value;
             const content = document.getElementById('content').value;
 
-            fetch('https://your-app-name.herokuapp.com/posts/' + threadId, {
+            fetch('https://rebbit-d25da83b2fc6.herokuapp.com/posts/' + threadId, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -53,7 +53,7 @@
                 return;
             }
 
-            fetch('https://your-app-name.herokuapp.com/posts/' + threadId)
+            fetch('https://rebbit-d25da83b2fc6.herokuapp.com/posts/' + threadId)
             .then(response => response.json())
             .then(data => {
                 const postList = document.getElementById('postList');
