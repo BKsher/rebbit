@@ -32,9 +32,10 @@ router.post('/login', (req, res) => {
 
       if (isMatch) {
         // Passwords match
+        console.log("User object:", user); // Add this line to debug
         const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
-        res.json({ token });
-        res.send('Login successful');
+        return res.json({ token });
+        //res.send('Login successful');
       } else {
         // Passwords do not match
         res.status(401).send('Invalid credentials');
