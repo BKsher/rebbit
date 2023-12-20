@@ -21,6 +21,11 @@
     <button onclick="getUserIdByEmail()">Get User ID</button>
     <p id="userIdByEmailResult"></p>
 
+    <h2>Get All Comments by User ID</h2>
+    <input type="text" id="commentUserId" placeholder="Enter User ID">
+    <button onclick="getAllCommentsByUserId()">Get Comments</button>
+    <ul id="commentsResult"></ul>
+
     <script>
         function getUserById() {
             const userId = document.getElementById('userId').value;
@@ -48,6 +53,22 @@
                 .then(response => response.json())
                 .then(data => {
                     document.getElementById('userIdByEmailResult').innerText = JSON.stringify(data);
+                })
+                .catch(error => console.error('Error:', error));
+        }
+
+        function getAllCommentsByUserId() {
+            const userId = document.getElementById('commentUserId').value;
+            fetch(`https://your-app-name.herokuapp.com/comments/user/${userId}`)
+                .then(response => response.json())
+                .then(data => {
+                    const commentsList = document.getElementById('commentsResult');
+                    commentsList.innerHTML = ''; // Clear existing list
+                    data.forEach(comment => {
+                        const listItem = document.createElement('li');
+                        listItem.textContent = `Comment ID: ${comment.comment_id}, Content: ${comment.content}`;
+                        commentsList.appendChild(listItem);
+                    });
                 })
                 .catch(error => console.error('Error:', error));
         }
