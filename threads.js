@@ -1,9 +1,10 @@
 const express = require('express');
 const router = express.Router();
+const authenticate = require('./auth/authenticate');
 const db = require('./database'); 
 
 // Endpoint to create a new thread
-router.post('/', (req, res) => {
+router.post('/', authenticate, (req, res) => {
   const { title, userId } = req.body; 
   if (!title || !userId) {
     return res.status(400).send('Title and user ID are required');

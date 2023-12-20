@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 const db = require('../database'); // Adjust the path as per your project structure
 
 // User login endpoint
@@ -30,7 +31,8 @@ router.post('/login', (req, res) => {
 
       if (isMatch) {
         // Passwords match
-        // Here you would create a session or token
+        const token = jwt.sign({ userId: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+        res.json({ token });
         res.send('Login successful');
       } else {
         // Passwords do not match

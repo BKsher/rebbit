@@ -27,6 +27,7 @@
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
+                    'Authorization': localStorage.getItem('token')
                 },
                 body: JSON.stringify({ title, userId }),
             })
@@ -38,7 +39,7 @@
         });
 
         document.getElementById('viewThreads').addEventListener('click', function() {
-        fetch('https://rebbit-d25da83b2fc6.herokuapp.com/threads') // Replace with your Heroku app URL
+        fetch('https://rebbit-d25da83b2fc6.herokuapp.com/threads')
         .then(response => response.json())
         .then(data => {
             const threadList = document.getElementById('threadList');
