@@ -59,7 +59,7 @@
 
         function getAllCommentsByUserId() {
             const userId = document.getElementById('commentUserId').value;
-            fetch(`https://your-app-name.herokuapp.com/comments/user/${userId}`)
+            fetch(`https://rebbit-d25da83b2fc6.herokuapp.com/users/user/${userId}`)
                 .then(response => response.json())
                 .then(data => {
                     const commentsList = document.getElementById('commentsResult');
