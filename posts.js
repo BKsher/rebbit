@@ -8,6 +8,7 @@ router.post('/:threadId', authenticate, (req, res) => {
   const { threadId } = req.params;
   const userId = req.user.id; // Assuming the user ID is stored in req.user by your authentication middleware
   const { content } = req.body;
+  console.log("User id from req.user.id:", userId); // Debugging line
 
   if (!content) {
     return res.status(400).send('Content is required');
