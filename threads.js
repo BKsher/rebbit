@@ -6,6 +6,7 @@ const db = require('./database');
 // Endpoint to create a new thread (Authenticated users)
 router.post('/', authenticate, (req, res) => {
   const { title } = req.body;
+  console.log("User from req.user:", req.user); // Debugging line
   const userId = req.user.id; // user ID is stored in req.user by authentication middleware
 
   if (!title) {
